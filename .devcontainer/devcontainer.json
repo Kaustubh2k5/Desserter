@@ -1,0 +1,38 @@
+{
+  "name": "Desserter",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "npm ci && npm --prefix website ci",
+  "forwardPorts": [
+    3000,
+    8081,
+    19002
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docusaurus",
+      "onAutoForward": "openBrowser"
+    },
+    "8081": {
+      "label": "Expo Metro",
+      "onAutoForward": "notify"
+    },
+    "19002": {
+      "label": "Expo DevTools",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "node"
+}
